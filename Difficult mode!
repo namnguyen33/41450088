@@ -1,0 +1,133 @@
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Difficulty is now active ",true)
+wait(2) require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("MAKE BY SESON KC HAVE FUN!",true)
+
+-- Sprint Bar
+loadstring(game:HttpGet("https://pastefy.app/EpqLU3vm/raw"))()
+
+-- Cease
+coroutine.wrap(function()
+    while true do
+        wait(325)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(0)
+loadstring(game:HttpGet("https://pastefy.app/ofutwkjb/raw "))()
+
+end
+
+end)()
+
+-- NULL
+coroutine.wrap(function()
+    while true do
+        wait(210)
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/namnguyen33/41450088/refs/heads/main/Null"))()
+end
+
+end)()
+
+-- Dread
+coroutine.wrap(function()
+    while true do
+        wait(550)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(0)       
+loadstring(game:HttpGet("https://raw.githubusercontent.com/huyhoanggphuc/Entity-obfuscate/refs/heads/main/Dread.lua"))()
+
+end
+
+end)()
+
+-- Rebound
+coroutine.wrap(function()
+    while true do
+        wait(150)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(0)
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Kotyara19k-Doorsspawner/Random-files/main/ReboundHardcoreSpawn'))()
+
+end
+
+end)()
+
+-- A200(Secret Entity)
+coroutine.wrap(function()
+    while true do
+        wait(100000)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(0)
+        loadstring(game:HttpGet('https://pastefy.app/1xxpTxo3/raw'))()
+
+        end
+
+        end)()
+        
+        -- Detph
+coroutine.wrap(function()
+    while true do
+        wait(35)
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/localplayerr/Doors-stuff/refs/heads/main/Immersive%20mode/Detph"))()
+end
+
+end)()
+
+-- hunger
+coroutine.wrap(function()
+    while true do
+        wait(199)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(0)
+loadstring(game:HttpGet("https://pastebin.com/raw/a9km8DA5"))()
+
+end
+
+end)()
+
+
+-- Bundger
+coroutine.wrap(function()
+    while true do
+        wait(290)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(0)
+loadstring(game:HttpGet("https://pastebin.com/raw/P1nudihg"))()
+
+end
+
+end)()
+
+-- E-60
+ 
+coroutine.wrap(function()
+ 
+while true do
+ 
+local sctm = math.random(350,15000)
+ 
+wait(sctm)
+ 
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption('Secret entity did not dangerous',true)
+loadstring(game:HttpGet("https://pastebin.com/raw/Z504KNtF"))()
+ 
+end
+ 
+end)()
+
+-- Huntering
+coroutine.wrap(function()
+    while true do
+        wait(320)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(0)
+        loadstring(game:HttpGet('https://pastebin.com/raw/5vLfqSWa'))()
+    end
+end)()
+
+-- Blindy
+coroutine.wrap(function()
+    while true do
+        wait(90)
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(0)
+loadstring(game:HttpGet("https://pastebin.com/raw/57e7i2hg"))()
+    end
+end)()
