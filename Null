@@ -49,13 +49,7 @@ local entity = spawner.Create({
         Cause = " ",
     }
 })
-},
- Death = {
-  Type = "Guiding", -- "Curious"
-  Hints = {"You died to NULL..", "HE WILL APPEAR WHEN THE FLOOR SHAKS", "YOU ESCAPE BEFORE HE COMES. ", "BE CAREFUL!."},
-  NULL = ""
- }
-})
+
 ---====== Debug entity ======---
 entity:SetCallback("OnSpawned", function()
 
