@@ -1,8 +1,10 @@
-require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Difficulty is now active ",true)
-wait(5) require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Make by seson kc!",true)
-
--- Sprint Bar
-loadstring(game:HttpGet("https://pastefy.app/EpqLU3vm/raw"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Zeca130/Doors-mode/refs/heads/main/README.md"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/namnguyen33/41450088/refs/heads/main/Text%20new"))()
+task.spawn(function()
+    pcall(function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/Zeca130/doors-my-version-nightmareMode./refs/heads/main/Fog'))()
+    end)
+end)
 
 --Cave ambience
 local sound = Instance.new("Sound")
@@ -236,7 +238,7 @@ end)()
 --hunger
 coroutine.wrap(function()
     while true do
-        wait(35)
+        wait(549)
         loadstring(game:HttpGet("https://pastebin.com/raw/W500czKk"))()
 end
 
@@ -245,7 +247,7 @@ end)()
 --threat
 coroutine.wrap(function()
     while true do
-        wait(234)
+        wait(40)
         loadstring(game:HttpGet("https://pastebin.com/raw/9EHf6vwQ"))()
 end
 
@@ -254,8 +256,17 @@ end)()
 --a60
 coroutine.wrap(function()
     while true do
+        wait(300)
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Idk-lol2/a-60aa/refs/heads/main/---%3D%3D%3D%3D%3D%3D%20a-60%20agresiv%20spawner%20%3D%3D%3D%3D%3D%3D---.txt"))()
+end
+
+end)()
+
+--??
+coroutine.wrap(function()
+    while true do
         wait(35)
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/namnguyen33/41450088/refs/heads/main/A60"))()
+        loadstring(game:HttpGet("https://pastebin.com/raw/gRE7ufc5"))()
 end
 
 end)()
