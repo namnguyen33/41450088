@@ -1,0 +1,37 @@
+local fog = Instance.new("ColorCorrectionEffect")
+local lighting = game:GetService("Lighting")
+
+local fogSettings = {
+    Density = 0.3,
+    Color = Color3.new(0.5, 0.5, 0.6),
+    Decay = Color3.new(0.8, 0.8, 0.9),
+    StartDistance = 5,
+    EndDistance = 100
+}
+
+lighting.FogStart = fogSettings.StartDistance
+lighting.FogEnd = fogSettings.EndDistance
+lighting.FogColor = fogSettings.Color
+lighting.FogDensity = fogSettings.Density
+
+lighting.Ambient = Color3.new(0.3, 0.3, 0.4)
+lighting.OutdoorAmbient = Color3.new(0.4, 0.4, 0.5)
+lighting.Brightness = 1.5
+lighting.ExposureCompensation = -0.5
+
+fog.Name = "DoorsFogEffect"
+fog.Contrast = 0.1
+fog.Saturation = -0.1
+fog.TintColor = Color3.new(0.9, 0.9, 1)
+fog.Parent = lighting
+
+local function updateFog(intensity)
+    lighting.FogDensity = fogSettings.Density * intensity
+    lighting.FogEnd = fogSettings.EndDistance * (2 - intensity)
+end
+
+game:GetService("RunService").Heartbeat:Connect(function()
+end)Sprint script (new)
+
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/DoorsHubs/Doors-Hubs/refs/heads/main/Hardcore%20Sprint%20System%20(PC%20and%20Mobile%20Adaptation).lua.txt"))()
