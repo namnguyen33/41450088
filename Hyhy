@@ -1,0 +1,41 @@
+local plr = game.Players.LocalPlayer
+local chr = plr.Character or plr.CharacterAdded:Wait()
+local cam = workspace.CurrentCamera
+local offsetgyat = math.random(5, 15)
+local TweenService = game:GetService("TweenService")
+
+local Electricer = game:GetObjects("rbxassetid://96445372147310")[1]
+Electricer.Parent = workspace
+local primary_part = Electricer:FindFirstChildWhichIsA("BasePart") or Electricer:FindFirstChildWhichIsA("Part")
+Electricer.PrimaryPart = primary_part
+Electricer:SetPrimaryPartCFrame(chr.HumanoidRootPart.CFrame * CFrame.new(0, 0, -offsetgyat))
+Electricer.PrimaryPart.CanCollide = false
+
+Electricer.PrimaryPart.Desp.PlaybackSpeed = 1.1
+Electricer.PrimaryPart.PlaySound.PlaybackSpeed = 2
+
+local function Dmg()
+    local hum = chr:FindFirstChild("Humanoid")
+    local dmg = 1.5
+        hum:TakeDamage(dmg)
+           local ReSt = game:GetService("ReplicatedStorage") 
+           ReSt.GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Electricer"
+end
+
+local function LookAt()
+    local direction = (Electricer.PrimaryPart.Position - cam.CFrame.Position).unit
+    local dot_product = direction:Dot(cam.CFrame.LookVector)
+    return dot_product > 0.95
+end
+
+wait(0.5)
+task.spawn(function()
+while true do wait(0.1)
+if LookAt() then
+Dmg()
+end
+end
+end)
+
+wait(3)
+Electricer:Destroy()
