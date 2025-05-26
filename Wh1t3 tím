@@ -1,0 +1,110 @@
+
+local Creator = loadstring(game:HttpGet("https://raw.githubusercontent.com/centernodining/DeltaEntitySpawner/main/source.lua"))()
+local entity = Creator.createEntity({
+    CustomName = "WH1T3 PURPLE",
+    Model = "https://github.com/centernodining/models/blob/main/WH1T3PURPLE.rbxm?raw=true",
+    Speed = 120,
+    DelayTime = 2,
+    HeightOffset = 0,
+    CanKill = true,
+    KillRange = 50,
+    BreakLights = true,
+    BackwardsMovement = false,
+    FlickerLights = {
+        Enabled = false,
+        Time = 2,
+    },
+    Cycles = {
+        Min = 5,
+        Max = 15,
+        WaitTime = 2,
+    },
+    CamShake = {
+        Enabled = true,
+        Values = {5, 15, 0.1, 1},
+        Range = 100,
+    },
+    ResistCrucifix = true,
+    IsCurse = true,
+    CustomDialog = {"WH1T3 PURPLE got you."}
+})
+
+entity:SetCallback("OnSpawned", function()
+    local lighting = game:GetService("Lighting")
+    lighting.Ambient = Color3.fromRGB(128, 0, 128)
+    lighting.OutdoorAmbient = Color3.fromRGB(128, 0, 128)
+
+    local playerGui = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+    local noise = Instance.new("ImageLabel")
+    noise.Name = "ScreenNoise"
+    noise.Size = UDim2.new(1, 0, 1, 0)
+    noise.BackgroundTransparency = 1
+    noise.Image = "rbxassetid://9822194620"
+    noise.ImageTransparency = 0.3
+    noise.ZIndex = 100
+    noise.Parent = playerGui
+
+    task.delay(4, function()
+        if noise then noise:Destroy() end
+    end)
+
+    local moveSound = Instance.new("Sound")
+    moveSound.SoundId = "rbxassetid://73149210226328"
+    moveSound.Volume = 2
+    moveSound.Looped = true
+    moveSound.Name = "MoveSound"
+    moveSound.Parent = workspace
+    moveSound:Play()
+end)
+
+entity:SetCallback("OnDespawned", function()
+    local lighting = game:GetService("Lighting")
+    lighting.Ambient = Color3.fromRGB(0, 0, 0)
+    lighting.OutdoorAmbient = Color3.fromRGB(0, 0, 0)
+
+    local moveSound = workspace:FindFirstChild("MoveSound")
+    if moveSound then moveSound:Destroy() end
+end)
+
+entity:SetCallback("OnDeath", function()
+    local player = game.Players.LocalPlayer
+    local gui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
+    gui.IgnoreGuiInset = true
+    gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    gui.Name = "WH1T3JumpscareGui"
+
+    local face = Instance.new("ImageLabel")
+    face.Name = "ScareFace"
+    face.Image = "rbxassetid://85396591341941"
+    face.BackgroundTransparency = 1
+    face.Size = UDim2.new(1.5, 0, 1.5, 0)
+    face.Position = UDim2.new(-0.25, 0, -0.25, 0)
+    face.ImageColor3 = Color3.fromRGB(255, 0, 255)
+    face.ImageTransparency = 1
+    face.Parent = gui
+
+    local sound = Instance.new("Sound")
+    sound.SoundId = "rbxassetid://18459521002"
+    sound.Volume = 10
+    sound.Looped = false
+    sound.Parent = gui
+    sound:Play()
+
+    gui.Parent = player:WaitForChild("PlayerGui")
+
+    game:GetService("TweenService"):Create(face, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+        ImageTransparency = 0
+    }):Play()
+
+    local ts = game:GetService("TweenService")
+    for i = 1, 8 do
+        local offset = UDim2.new(-0.25 + math.random(-5,5)/100, 0, -0.25 + math.random(-5,5)/100, 0)
+        ts:Create(face, TweenInfo.new(0.05), {Position = offset}):Play()
+        task.wait(0.05)
+    end
+
+    wait(2.5)
+    gui:Destroy()
+end)
+
+Creator.runEntity(entity)
