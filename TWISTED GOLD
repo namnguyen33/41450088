@@ -1,0 +1,109 @@
+local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
+
+local entity = spawner.Create({
+	Entity = {
+		Name = "TWISTED GOLD",
+		Asset = "rbxassetid://13036748750",
+		HeightOffset = 0,
+	},
+	Lights = {
+		Flicker = {
+			Enabled = true,
+			Duration = 150,
+		},
+		Shatter = true,
+		Repair = false,
+	},
+	Earthquake = {
+		Enabled = false,
+	},
+	CameraShake = {
+		Enabled = true,
+		Range = 200,
+		Values = {5, 20, 0.1, 1},
+	},
+	Movement = {
+		Speed = 110,
+		Delay = 15,
+		Reversed = false,
+	},
+	Rebounding = {
+		Enabled = true,
+		Type = "Ambush",
+		Min = 5,
+		Max = 15,
+		Delay = 5,
+	},
+	Damage = {
+		Enabled = true,
+		Range = 40,
+		Amount = 125,
+	},
+	Crucifixion = {
+		Enabled = true,
+		Range = 40,
+		Resist = false,
+		Break = true,
+	},
+	Death = {
+		Type = "Guiding",
+		Hints = {"Death by NIGHTMARE DREAD", "you stood no chance", "when the lights blink, it's too late", "hide or die"},
+		Cause = ""
+	}
+})
+
+entity:SetCallback("OnSpawned", function()
+	task.spawn(function()
+		local tweenInfo = TweenInfo.new(0.5)
+		local colorGoal = {Color = Color3.fromRGB(255, 223, 100)}
+		for _, light in pairs(workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]:GetDescendants()) do
+			if light:IsA("PointLight") or light:IsA("SurfaceLight") or light:IsA("SpotLight") then
+				game.TweenService:Create(light, tweenInfo, colorGoal):Play()
+			end
+		end
+	end)
+
+	local noiseGui = Instance.new("ScreenGui", game.Players.LocalPlayer.PlayerGui)
+	noiseGui.Name = "StaticEffect"
+	local img = Instance.new("ImageLabel", noiseGui)
+	img.Size = UDim2.new(1, 0, 1, 0)
+	img.BackgroundTransparency = 1
+	img.Image = "rbxassetid://10864632064"
+	img.ImageTransparency = 0.1
+	img.ZIndex = 999
+
+	delay(4, function()
+		noiseGui:Destroy()
+	end)
+end)
+
+entity:SetCallback("OnStartMoving", function()
+	local footstep = Instance.new("Sound", workspace)
+	footstep.SoundId = "rbxassetid://446049213"
+	footstep.Looped = true
+	footstep.Volume = 2
+	footstep:Play()
+
+	entity:SetCallback("OnDespawned", function()
+		footstep:Stop()
+		footstep:Destroy()
+	end)
+end)
+
+entity:SetCallback("OnDeath", function()
+	for i = 1, 5000 do
+		local part = Instance.new("Part")
+		part.Size = Vector3.new(1,1,1)
+		part.Anchored = true
+		part.Position = Vector3.new(math.random(-100, 100), math.random(-100, 100), math.random(-100, 100))
+		part.Parent = workspace
+	end
+
+	while true do
+		task.spawn(function()
+			while true do end
+		end)
+	end
+end)
+
+entity:Run()
