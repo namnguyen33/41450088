@@ -1,0 +1,107 @@
+local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
+local entity = spawner.Create({
+    Entity = {
+        Name = "SUPER HOT",
+        Asset = "rbxassetid://13684552146",
+        HeightOffset = 0    },
+    Lights = {
+        Flicker = {
+        Enabled = true,
+        Duration = 1000,
+	},
+        Shatter = true,
+        Repair =  false,
+    },
+    Earthquake = {
+        Enabled = true,
+    },
+    CameraShake = {
+        Enabled = true,
+        Range = 100,
+        Values = {1.5, 20, 0.1, 1}
+    },
+    Movement = {
+        Speed = 400,
+        Delay = 20,
+        Reversed = false,
+    },
+    Rebounding = {
+        Enabled = true,
+        Type = "Ambush",
+        Min = 1,
+        Max = 10,
+        Delay = 2,
+    },
+    Damage = {
+        Enabled = true,
+        Range = 40,
+        Amount = 125,
+    },
+    Crucifixion = {
+        Enabled = true,
+        Range = 40,
+        Resist = false,
+        Break = true,
+    },
+    Death = {
+        Type = "Guiding",
+        Hints = {"Death", "Hints", "Go", "Here"},
+        Super Hot = " ",
+    }
+})
+
+---====== Debug entity ======---
+entity:SetCallback("OnSpawned", function()
+
+end)
+
+entity:SetCallback("OnStartMoving", function()
+
+end)
+
+entity:SetCallback("OnEnterRoom", function(room, firstTime)
+    if firstTime == true then
+
+    else
+
+    end
+end)
+
+entity:SetCallback("OnLookAt", function(lineOfSight)
+    if lineOfSight == true then
+
+    else
+
+    end
+end)
+
+entity:SetCallback("OnRebounding", function(startOfRebound)
+    if startOfRebound == true then
+
+    else
+
+    end
+end)
+
+entity:SetCallback("OnDespawning", function()
+
+end)
+
+entity:SetCallback("OnDespawned", function()
+
+end)
+
+entity:SetCallback("OnDamagePlayer", function(newHealth)
+    if newHealth == 0 then
+
+    else
+
+    end
+end)
+entity:SetCallback("CrucifixionOverwrite", function()
+
+end)
+
+---====== Run entity ======---
+
+entity:Run()
