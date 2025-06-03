@@ -1,0 +1,101 @@
+--text
+loadstring(game:HttpGet("https://raw.githubusercontent.com/namnguyen33/41450088/refs/heads/main/Text%20new"))()
+
+--== Guiding candle ==--
+pcall(function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/kodbolx/kodbolhub/refs/heads/main/guidingcandle.lua"))()
+end)
+
+--== Opener door sounds ==--
+pcall(function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/check78/Endless-Doors-In-Doors/main/custom%20doors%20sounds.txt"))()
+end)
+
+--== Screech edit ==--
+local screech = game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.Screech
+game.ReplicatedStorage.Entities.Screech.Top.Eyes.Color = Color3.fromRGB(255, 255, 0)
+screech.Caught.SoundId = "rbxassetid://7492033495"
+screech.Caught.PlaybackSpeed = 1.6
+screech.Attack.SoundId = "rbxassetid://8080941676"
+
+--== Hide jumpscare sound ==--
+game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.HideMonster.Scare.SoundId = "rbxassetid://9126213741"
+
+--== Spider sound ==--
+game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.SpiderJumpscare.Scare.SoundId = "rbxassetid://8080941676"
+
+--== Intro Text ==--
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+local shut = game.Players.LocalPlayer.PlayerGui.MainUI.MainFrame.IntroText
+local intro = shut:Clone()
+intro.Parent = game.Players.LocalPlayer.PlayerGui.MainUI
+intro.Name = "IntroTextPleaseThankYou"
+intro.Visible = true
+intro.Text = "Difficulty Hotel"
+intro.TextTransparency = 0
+local underline = UDim2.new(1.1, 0, 0.015, 6)
+game.TweenService:Create(intro.Underline, TweenInfo.new(3), {Size = underline}):Play()
+wait(7)
+game.TweenService:Create(intro.Underline, TweenInfo.new(1.3), {Size = UDim2.new(0.95, 0, 0.015, 6)}):Play()
+wait(1)
+game.TweenService:Create(intro.Underline, TweenInfo.new(2), {ImageTransparency = 1}):Play()
+game.TweenService:Create(intro, TweenInfo.new(2), {TextTransparency = 1}):Play()
+game.TweenService:Create(intro.Underline, TweenInfo.new(7), {Size = UDim2.new(0, 0, 0.015, 6)}):Play()
+wait(2.3)
+intro.Visible = false
+wait(9)
+intro:Destroy()
+
+--== GAZE entity loop ==--
+coroutine.wrap(function()
+	while true do
+		wait(93)
+		game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+		pcall(function()
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/DoorsHubs/Tutorial/refs/heads/main/Gaze"))()
+		end)
+	end
+end)()
+
+--== OBEY entity loop ==--
+coroutine.wrap(function()
+	while true do
+		wait(39)
+		game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+		pcall(function()
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/namnguyen33/41450088/refs/heads/main/Obey"))()
+		end)
+	end
+end)()
+
+--== DEPTH entity loop ==--
+coroutine.wrap(function()
+	while true do
+		wait(10)
+		pcall(function()
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/namnguyen33/41450088/refs/heads/main/DEPTH"))()
+		end)
+	end
+end)()
+
+--Reboundting
+coroutine.wrap(function()
+	while true do
+		wait(73)
+		game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+		pcall(function()
+		    loadstring(game:HttpGet("https://raw.githubusercontent.com/namnguyen33/41450088/refs/heads/main/R.."))()
+		end)
+	end
+end)()
+		
+--super hot
+coroutine.wrap(function()
+	while true do
+		wait(56)
+		game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+		pcall(function()
+		    loadstring(game:HttpGet("https://raw.githubusercontent.com/namnguyen33/41450088/refs/heads/main/Hot"))()
+		end)
+	end
+end)()
