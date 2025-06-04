@@ -24,3 +24,12 @@ if ultimaroom ~= game.ReplicatedStorage.GameData.LatestRoom.Value then
 s:Destroy()
 break end
 end
+local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
+
+---====== Display achievement ======---
+achievementGiver({
+    Title = "Obeyter wrinkled",
+    Desc = "Can you do it?.",
+    Reason = "Quit obeying",
+    Image = "rbxassetid://104691478079694"
+})
