@@ -1,0 +1,113 @@
+---====== Load spawner ======---
+
+local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
+local Change = true
+local plr = game.Players.LocalPlayer
+local chr = plr.Character or plr.CharacterAdded:Wait()
+local cf = chr.HumanoidRootPart.CFrame * CFrame.new(0, 0, 10)
+
+---====== Create entity ======---
+
+local entity = spawner.Create({
+	Entity = {
+		Name = "threat",
+		Asset = "rbxassetid://108988008841078",
+		HeightOffset = 3
+	},
+	Lights = {
+		Flicker = {
+			Enabled = true,
+			Duration = 500
+		},
+		Shatter = false,
+		Repair = false
+	},
+	Earthquake = {
+		Enabled = false
+	},
+	CameraShake = {
+		Enabled = true,
+		Range = 130,
+		Values = {9, 20, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
+	},
+	Movement = {
+		Speed = 150,
+		Delay = 7,
+		Reversed = false
+	},
+	Rebounding = {
+		Enabled = true,
+		Type = "Ambush", -- "Blitz"
+		Min = 10,
+		Max = 10,
+		Delay = 0.001
+	},
+	Damage = {
+		Enabled = true,
+		Range = 100,
+		Amount = 0.01
+	},
+	Crucifixion = {
+		Enabled = true,
+		Range = 40,
+		Resist = false,
+		Break = true
+	},
+	Death = {
+		Type = "Guiding", -- "Curious"
+		Hints = {"Death", "Hints", "Go", "Here"},
+		Cause = ""
+	}
+})
+
+---====== Debug entity ======---
+
+entity:SetCallback("OnSpawned", function()
+    print("Entity has spawned")
+    local redtweeninfo = TweenInfo.new(3)
+local redinfo = {Color = Color3.fromRGB(110, 0, 110)}
+
+----------
+while Change == true do wait(1)
+for i,v in pairs(workspace.CurrentRooms:GetDescendants()) do
+			if v:IsA("Light") then
+					game.TweenService:Create(v,redtweeninfo,redinfo):Play()
+					if v.Parent.Name == "LightFixture" then
+						    game.TweenService:Create(v.Parent,redtweeninfo,redinfo):Play()
+					end
+		  end
+end
+end
+end)
+entity:SetCallback("OnDespawning", function()
+    Change = false
+end)
+
+entity:SetCallback("OnDamagePlayer", function(newHealth)
+	if newHealth == 0 then
+		print("Entity has killed the player")
+	else
+		print("Entity has damaged the player")
+local Camera = workspace.CurrentCamera
+local RunService = game:GetService("RunService")
+local lockOn = game.Workspace.threat.ThreatMoving
+local C = game.Players.LocalPlayer.Character:WaitForChild("Collision")
+C.Anchored = true
+lockOn.CFrame = cf
+lockOn.Anchored = false
+
+local a = game:GetService("RunService").RenderStepped:Connect(function()
+	Camera.CFrame = CFrame.lookAt(Camera.CFrame.Position, lockOn.Position)
+end)
+
+wait(2)
+a:Disconnect()
+game.Workspace.threat:Destroy()
+		game.Players.LocalPlayer.Character.Humanoid:TakeDamage(1000)
+        game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Threat"
+	end
+end)
+
+---====== Run entity ======---
+
+entity:Run()
