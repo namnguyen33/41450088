@@ -96,6 +96,6 @@ coroutine.wrap(function()
         Title = "Stop move",
         Desc = "Friend of Seek?",
         Reason = "Encounter Twiter",
-        Image = "rbxassetid://12545106439" -- Thay bằng hình của bạn
+        Image = "rbxassetid://" -- Thay bằng hình của bạn
     })
 end)()
